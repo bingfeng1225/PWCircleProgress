@@ -49,12 +49,30 @@ public class CircleProgress extends View {
         postInvalidate();
     }
 
+    public int getDirection() {
+        return direction;
+    }
+
+    public void setDirection(int direction) {
+        this.direction = direction;
+        postInvalidate();
+    }
+
     public int getRingWidth() {
         return ringWidth;
     }
 
     public void setRingWidth(int ringWidth) {
         this.ringWidth = ringWidth;
+        postInvalidate();
+    }
+
+    public int getStartAngle() {
+        return startAngle;
+    }
+
+    public void setStartAngle(int startAngle) {
+        this.startAngle = startAngle;
         postInvalidate();
     }
 
