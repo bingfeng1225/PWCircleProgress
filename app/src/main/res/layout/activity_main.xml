@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity">
+
+    <cn.qd.peiwen.circle.progress.CircleProgress
+        android:id="@+id/home_liquid_progress"
+        android:layout_width="62dp"
+        android:layout_height="62dp"
+        android:layout_centerInParent="true"
+        app:cp_progress_color="#fb5f44"
+        app:cp_ring_color="#d0d0d0"
+        app:cp_direction="anticlockwise"
+        app:cp_progress="20"
+        app:cp_ring_width="8dp" />
+
+</RelativeLayout>

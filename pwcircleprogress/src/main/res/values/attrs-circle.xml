@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <declare-styleable name="CircleProgress">
+        <attr name="cp_progress" format="integer" />
+        <attr name="cp_start_angle" format="integer" />
+        <attr name="cp_ring_width" format="dimension" />
+
+        <attr name="cp_direction" format="enum">
+            <enum name="clockwise" value="0x00" />
+            <enum name="anticlockwise" value="0x01" />
+        </attr>
+
+        <attr name="cp_ring_color" format="color" />
+        <attr name="cp_progress_color" format="color" />
+    </declare-styleable>
+
+</resources>
