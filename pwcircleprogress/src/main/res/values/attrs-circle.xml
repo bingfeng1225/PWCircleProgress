@@ -15,4 +15,22 @@
         <attr name="cp_progress_color" format="color" />
     </declare-styleable>
 
+
+    <declare-styleable name="DashboardProgress">
+        <attr name="dbp_value" format="integer" />
+        <attr name="dbp_min_value" format="integer" />
+        <attr name="dbp_max_value" format="integer" />
+
+        <attr name="dbp_span_angle" format="integer" />
+        <attr name="dbp_start_angle" format="integer" />
+        <attr name="dbp_ring_width" format="dimension" />
+
+        <attr name="dbp_direction" format="enum">
+            <enum name="clockwise" value="0x00" />
+            <enum name="anticlockwise" value="0x01" />
+        </attr>
+
+        <attr name="dbp_ring_color" format="color" />
+        <attr name="dbp_progress_color" format="color" />
+    </declare-styleable>
 </resources>

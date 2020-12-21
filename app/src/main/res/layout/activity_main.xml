@@ -6,15 +6,27 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
-    <cn.qd.peiwen.circle.progress.CircleProgress
-        android:id="@+id/home_liquid_progress"
-        android:layout_width="62dp"
-        android:layout_height="62dp"
+<!--    <cn.qd.peiwen.circle.progress.CircleProgress-->
+<!--        android:layout_width="62dp"-->
+<!--        android:layout_height="62dp"-->
+<!--        android:layout_centerInParent="true"-->
+<!--        app:cp_progress_color="#fb5f44"-->
+<!--        app:cp_ring_color="#d0d0d0"-->
+<!--        app:cp_direction="anticlockwise"-->
+<!--        app:cp_progress="20"-->
+<!--        app:cp_ring_width="8dp" />-->
+
+    <cn.qd.peiwen.circle.progress.DashboardProgress
+        android:layout_width="150dp"
+        android:layout_height="150dp"
         android:layout_centerInParent="true"
-        app:cp_progress_color="#fb5f44"
-        app:cp_ring_color="#d0d0d0"
-        app:cp_direction="anticlockwise"
-        app:cp_progress="20"
-        app:cp_ring_width="8dp" />
+        app:dbp_span_angle="280"
+        app:dbp_start_angle="-230"
+        app:dbp_progress_color="#fb5f44"
+        app:dbp_ring_color="#d0d0d0"
+        app:dbp_value="-120"
+        app:dbp_min_value="-180"
+        app:dbp_max_value="50"
+        app:dbp_ring_width="5dp" />
 
 </RelativeLayout>
