@@ -14,7 +14,7 @@ import cn.qd.peiwen.progress.R;
 
 public class DashboardProgress  extends View {
 
-    private int value;// 当前进度
+    private float value;// 当前进度
     private int minValue;// 最小值
     private int maxValue;// 最大值
 
@@ -40,11 +40,11 @@ public class DashboardProgress  extends View {
         this.initCircleProgress(context, attrs, defStyle);
     }
 
-    public int getValue() {
+    public float getValue() {
         return value;
     }
 
-    public void setValue(int value) {
+    public void setValue(float value) {
         this.value = value;
         postInvalidate();
     }
@@ -129,7 +129,7 @@ public class DashboardProgress  extends View {
             this.minValue = ta.getInt(R.styleable.DashboardProgress_dbp_min_value, 0);
             this.maxValue = ta.getInt(R.styleable.DashboardProgress_dbp_max_value, 100);
 
-            this.value = ta.getInt(R.styleable.DashboardProgress_dbp_value, this.minValue);
+            this.value = ta.getFloat(R.styleable.DashboardProgress_dbp_value, this.minValue);
 
             this.direction = ta.getInt(R.styleable.DashboardProgress_dbp_direction, 0);
             this.ringWidth = ta.getDimensionPixelSize(R.styleable.DashboardProgress_dbp_ring_width, 10);

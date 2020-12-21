@@ -17,7 +17,7 @@
 
 
     <declare-styleable name="DashboardProgress">
-        <attr name="dbp_value" format="integer" />
+        <attr name="dbp_value" format="float" />
         <attr name="dbp_min_value" format="integer" />
         <attr name="dbp_max_value" format="integer" />
 
