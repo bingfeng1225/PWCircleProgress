@@ -126,9 +126,10 @@ public class DashboardProgress  extends View {
     private void initCircleProgress(Context context, AttributeSet attrs, int defStyle) {
         TypedArray ta = context.obtainStyledAttributes(attrs, R.styleable.DashboardProgress, defStyle, 0);
         try {
-            this.value = ta.getInt(R.styleable.DashboardProgress_dbp_value, 0);
             this.minValue = ta.getInt(R.styleable.DashboardProgress_dbp_min_value, 0);
             this.maxValue = ta.getInt(R.styleable.DashboardProgress_dbp_max_value, 100);
+
+            this.value = ta.getInt(R.styleable.DashboardProgress_dbp_value, this.minValue);
 
             this.direction = ta.getInt(R.styleable.DashboardProgress_dbp_direction, 0);
             this.ringWidth = ta.getDimensionPixelSize(R.styleable.DashboardProgress_dbp_ring_width, 10);
