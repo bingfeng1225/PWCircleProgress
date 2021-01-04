@@ -12,7 +12,7 @@ import android.view.View;
 
 import cn.qd.peiwen.progress.R;
 
-public class DashboardProgress  extends View {
+public class DashboardProgress extends View {
 
     private float value;// 当前进度
     private int minValue;// 最小值
@@ -152,12 +152,6 @@ public class DashboardProgress  extends View {
         float centerY = getHeight() / 2.f;
         float radius = (-this.ringWidth + Math.min(getWidth(), getHeight())) / 2.f;
 
-        Paint progressPaint = new Paint();
-        progressPaint.setAntiAlias(true);
-        progressPaint.setStyle(Paint.Style.STROKE);
-        progressPaint.setColor(this.progressColor);
-        progressPaint.setStrokeWidth(this.ringWidth);
-
         RectF oval = new RectF();
         oval.top = centerY - radius;
         oval.bottom = centerY + radius;
@@ -170,14 +164,76 @@ public class DashboardProgress  extends View {
         ringPaint.setStyle(Paint.Style.STROKE);
         ringPaint.setStrokeWidth(this.ringWidth);
 
+        Paint progressPaint = new Paint();
+        progressPaint.setAntiAlias(true);
+        progressPaint.setStyle(Paint.Style.STROKE);
+        progressPaint.setColor(this.progressColor);
+        progressPaint.setStrokeWidth(this.ringWidth);
+
+        Paint ringCircle = new Paint();
+        ringCircle.setAntiAlias(true);
+        ringCircle.setColor(this.ringColor);
+        ringCircle.setStyle(Paint.Style.FILL);;
+        ringCircle.setStrokeWidth(1);
+
+        Paint progressCircle = new Paint();
+        progressCircle.setAntiAlias(true);
+        progressCircle.setColor(this.progressColor);
+        progressCircle.setStyle(Paint.Style.FILL);
+        progressCircle.setStrokeWidth(1);
+
         float progress = 1.0f * (this.value - this.minValue) / (this.maxValue - this.minValue);
 
-        if(direction == 0) {
+        double startRadians = ((360 + startAngle % 360) % 360) * Math.PI / 180.0;
+        float startCos = (float) Math.cos(startRadians);
+        float startSin = (float) Math.sin(startRadians);
+        float startX = (centerX + radius * startCos);
+        float startY = (centerY + radius * startSin);
+
+        double endRadians = ((360 + (startAngle + this.spanAngle) % 360) % 360) * Math.PI / 180.0;
+        float endCos = (float) Math.cos(endRadians);
+        float endSin = (float) Math.sin(endRadians);
+        float endX = (centerX + radius * endCos);
+        float endY = (centerY + radius * endSin);
+
+        if (direction == 0) {
+            if(progress <= 0.0f) {
+                canvas.drawCircle(endX, endY, this.ringWidth / 2.0f, ringCircle);
+                canvas.drawCircle(startX, startY, this.ringWidth / 2.0f, ringCircle);
+            } else if(progress >= 1.0f) {
+                canvas.drawCircle(endX, endY, this.ringWidth / 2.0f, progressCircle);
+                canvas.drawCircle(startX, startY, this.ringWidth / 2.0f, progressCircle);
+            } else {
+                canvas.drawCircle(endX, endY, this.ringWidth / 2.0f, ringCircle);
+                canvas.drawCircle(startX, startY, this.ringWidth / 2.0f, progressCircle);
+            }
             canvas.drawArc(oval, this.startAngle, this.spanAngle, false, ringPaint);
-            canvas.drawArc(oval, this.startAngle, progress * this.spanAngle, false, progressPaint);
+            if(progress <= 0.0f) {
+                canvas.drawArc(oval, this.startAngle, 0, false, progressPaint);
+            } else if(progress >= 1.0f) {
+                canvas.drawArc(oval, this.startAngle, this.spanAngle, false, progressPaint);
+            } else {
+                canvas.drawArc(oval, this.startAngle, progress * this.spanAngle, false, progressPaint);
+            }
         } else {
+            if(progress <= 0.0f) {
+                canvas.drawCircle(endX, endY, this.ringWidth / 2.0f, ringCircle);
+                canvas.drawCircle(startX, startY, this.ringWidth / 2.0f, ringCircle);
+            } else if(progress >= 1.0f) {
+                canvas.drawCircle(endX, endY, this.ringWidth / 2.0f, progressCircle);
+                canvas.drawCircle(startX, startY, this.ringWidth / 2.0f, progressCircle);
+            } else {
+                canvas.drawCircle(endX, endY, this.ringWidth / 2.0f, progressCircle);
+                canvas.drawCircle(startX, startY, this.ringWidth / 2.0f, ringCircle);
+            }
             canvas.drawArc(oval, this.startAngle, this.spanAngle, false, progressPaint);
-            canvas.drawArc(oval, this.startAngle, this.spanAngle - progress * this.spanAngle, false, ringPaint);
+            if(progress <= 0.0f) {
+                canvas.drawArc(oval, this.startAngle, this.spanAngle, false, ringPaint);
+            } else if(progress >= 1.0f) {
+                canvas.drawArc(oval, this.startAngle, 0, false, ringPaint);
+            } else {
+                canvas.drawArc(oval, this.startAngle, this.spanAngle - progress * this.spanAngle, false, ringPaint);
+            }
         }
     }
 }

@@ -24,7 +24,8 @@
         app:dbp_start_angle="-230"
         app:dbp_progress_color="#fb5f44"
         app:dbp_ring_color="#d0d0d0"
-        app:dbp_value="-120"
+        app:dbp_value="50"
+        app:dbp_direction="anticlockwise"
         app:dbp_min_value="-180"
         app:dbp_max_value="50"
         app:dbp_ring_width="5dp" />
